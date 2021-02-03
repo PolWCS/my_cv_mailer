@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 
-const MailerForm = () => {
-  const [formData, setFormData] = useState({
-    to: null,
-    subject: null,
-    text: null,
-  });
+import { setEmailFormDataAction } from "../../../../redux/actions/emailActions";
 
+import "../../../../css/dashboard/mailer/form/MailerForm.css";
+
+const MailerForm = ({ emailFormData, setEmailFormData }) => {
   const handleInput = (event) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
+    setEmailFormData({
+      ...emailFormData,
+      [event.target.name]: event.target.value,
+    });
   };
 
   return (
@@ -19,7 +20,7 @@ const MailerForm = () => {
         <input
           name="to"
           className="mailer_form_input"
-          value={formData.to}
+          value={emailFormData.to}
           onChange={handleInput}
         />
       </label>
@@ -28,16 +29,16 @@ const MailerForm = () => {
         <input
           name="subject"
           className="mailer_form_input"
-          value={formData.subject}
+          value={emailFormData.subject}
           onChange={handleInput}
         />
       </label>
-      <label htmlFor="text" className="mailer_form_label">
-        Texte:
+      <label htmlFor="message" className="mailer_form_label">
+        Message:
         <input
-          name="text"
+          name="message"
           className="mailer_form_input"
-          value={formData.text}
+          value={emailFormData.message}
           onChange={handleInput}
         />
       </label>
@@ -45,4 +46,10 @@ const MailerForm = () => {
   );
 };
 
-export default connect()(MailerForm);
+const mapStateToProps = ({ custom: { emailFormData } }) => ({ emailFormData });
+
+const mapDispatchToProps = (dispatch) => ({
+  setEmailFormData: setEmailFormDataAction(dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MailerForm);

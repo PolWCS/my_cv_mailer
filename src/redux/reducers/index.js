@@ -3,6 +3,7 @@ import { bearerToken, user } from "./authReducers";
 import { cvList } from "./cvReducers";
 import { motivMailList } from "./motivMailReducers";
 import { contactBookList } from "./contactBookReducers";
+import { emailFormData } from "./emailReducers";
 
 export default combineReducers({
   bearerToken,
@@ -10,4 +11,5 @@ export default combineReducers({
   cvList,
   motivMailList,
   contactBookList,
+  emailFormData,
 });
