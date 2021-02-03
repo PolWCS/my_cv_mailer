@@ -115,9 +115,6 @@ function DropZone({ currentDoc, setCurrentDoc, user }) {
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
-  console.log("cd", currentDoc);
-  console.log("doc", file.doc);
-
   return (
     <>
       {!file.url && (
@@ -137,7 +134,7 @@ function DropZone({ currentDoc, setCurrentDoc, user }) {
         </div>
       )}
       <div className="my_drop_zone_upload_file_container">
-        {(file.doc || currentDoc.ref) && !file.url && (
+        {(file.doc || currentDoc.ref) && (
           <div>
             <span>{file.doc && file.doc.name}</span>
             <button type="button" onClick={handleDelete}>

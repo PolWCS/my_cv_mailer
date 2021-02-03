@@ -1,17 +1,18 @@
-export const motivMailList = (state = null, action) => {
+export const motivMailList = (state = [], action) => {
   switch (action.type) {
     case "FETCH_MOTIV_MAIL_LIST_RESOLVE":
       return action.payload;
     case "SESSION_LOG_OUT":
-      return null;
+      return [];
     default:
       return state;
   }
 };
 
 const initialState = {
-  title: null,
-  url: null,
+  title: "",
+  url: "",
+  user_id: null,
 };
 
 export const newMMail = (state = initialState, action) => {

@@ -1,17 +1,18 @@
-export const cvList = (state = null, action) => {
+export const cvList = (state = [], action) => {
   switch (action.type) {
     case "FETCH_CV_LIST_RESOLVE":
       return action.payload;
     case "SESSION_LOG_OUT":
-      return null;
+      return [];
     default:
       return state;
   }
 };
 
 const initialState = {
-  title: null,
-  url: null,
+  title: "",
+  url: "",
+  user_id: null,
 };
 
 export const newCv = (state = initialState, action) => {

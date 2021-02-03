@@ -1,4 +1,10 @@
-const initialState = { to: null, subject: null, message: null };
+const initialState = {
+  to: "",
+  subject: "",
+  message: "",
+  html: "",
+  attachments: [],
+};
 
 export const emailFormData = (state = initialState, action) => {
   switch (action.type) {

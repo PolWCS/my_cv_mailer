@@ -8,6 +8,8 @@ const SendMailBtn = ({ emailFormData }) => {
       to: emailFormData.to,
       subject: emailFormData.subject,
       message: emailFormData.message,
+      html: emailFormData.html,
+      attachments: emailFormData.attachments,
     });
   };
 
