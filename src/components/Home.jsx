@@ -10,6 +10,8 @@ import { cyan, deepPurple } from "@material-ui/core/colors";
 
 import authProvider from "./login/authProvider";
 
+import Dashboard from "./dashboard/Dashboard";
+
 import UserList from "./user/UserList";
 import CvList from "./curriculumVitae/CvList";
 import MotivMailList from "./motivationMail/MotivMailList";
@@ -67,6 +69,7 @@ const Home = () => {
       <Admin
         // layout={MyLayout}
         // theme={theme}
+        dashboard={Dashboard}
         dataProvider={dataProvider}
         authProvider={authProvider}
         history={history}

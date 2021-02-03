@@ -7,10 +7,11 @@ export const getUserAction = (dispatch) => async () => {
   });
   const { id, fullName } = JSON.parse(sessionStorage.getItem("auth"));
   const response = await axios.get(`${process.env.REACT_APP_HOST}/users/${id}`);
-  const { password, ...data } = response;
+  const { data } = response;
+  const { password, ...user } = data;
   dispatch({
     type: "FETCH_USER_RESOLVE",
-    payload: { ...data, fullName },
+    payload: { ...user, fullName },
   });
 };
 
