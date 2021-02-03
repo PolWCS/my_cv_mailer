@@ -8,3 +8,19 @@ export const cvList = (state = null, action) => {
       return state;
   }
 };
+
+const initialState = {
+  title: null,
+  url: null,
+};
+
+export const newCv = (state = initialState, action) => {
+  switch (action.type) {
+    case "SET_NEW_CV":
+      return action.payload;
+    case "RESET_NEW_CV":
+      return initialState;
+    default:
+      return state;
+  }
+};

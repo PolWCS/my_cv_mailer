@@ -14,3 +14,16 @@ export const getCvListAction = (dispatch) => async () => {
     payload: data,
   });
 };
+
+export const setNewCvAction = (dispatch) => async (cvData) => {
+  if (cvData) {
+    dispatch({
+      type: "SET_NEW_CV",
+      payload: cvData,
+    });
+  } else {
+    dispatch({
+      type: "RESET_NEW_CV",
+    });
+  }
+};

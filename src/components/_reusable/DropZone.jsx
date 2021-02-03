@@ -2,20 +2,21 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useDropzone } from "react-dropzone";
 import PropTypes from "prop-types";
+import axios from "axios";
 
 import { Button } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import SaveIcon from "@material-ui/icons/Save";
 import { getRef } from "../../utils/index";
 
-import { setEmailFormDataAction } from "../../redux/actions/emailActions";
+import { setCurrentDocAction } from "../../redux/actions/docActions";
 
-import app from "../base";
-import "../css/MyDropZone.css";
+import app from "../../base";
+import "../../css/DropZone.css";
 
 const storage = app.storage();
 
-function MyDropZone({ emailFormData, setEmailFormData, user }) {
+function DropZone({ currentDoc, setCurrentDoc, user }) {
   const [file, setFile] = useState({
     isDrop: false,
     doc: null,
@@ -55,8 +56,7 @@ function MyDropZone({ emailFormData, setEmailFormData, user }) {
           .getDownloadURL();
 
         setFile({ ...file, url });
-        setEmailFormData({
-          ...emailFormData,
+        setCurrentDoc({
           ref: `images/${user.id}/${doc.name}`,
           url: url,
         });
@@ -70,8 +70,7 @@ function MyDropZone({ emailFormData, setEmailFormData, user }) {
           .getDownloadURL();
 
         setFile({ ...file, url });
-        setEmailFormData({
-          ...emailFormData,
+        setCurrentDoc({
           ref: `audio/${user.id}/${doc.name}`,
           url: url,
         });
@@ -85,8 +84,7 @@ function MyDropZone({ emailFormData, setEmailFormData, user }) {
           .getDownloadURL();
 
         setFile({ ...file, url });
-        setEmailFormData({
-          ...emailFormData,
+        setCurrentDoc({
           ref: `video/${user.id}/${doc.name}`,
           url: url,
         });
@@ -100,8 +98,7 @@ function MyDropZone({ emailFormData, setEmailFormData, user }) {
           .getDownloadURL();
 
         setFile({ ...file, url });
-        setEmailFormData({
-          ...emailFormData,
+        setCurrentDoc({
           ref: `text/${user.id}/${doc.name}`,
           url: url,
         });
@@ -110,13 +107,16 @@ function MyDropZone({ emailFormData, setEmailFormData, user }) {
   };
 
   const handleRemove = async () => {
-    const reference = await getRef(emailFormData.ref);
+    const reference = await getRef(currentDoc.ref);
     reference.delete();
-    setEmailFormData();
+    setCurrentDoc();
     setFile({ isDrop: false, url: "", doc: null });
   };
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+
+  console.log("cd", currentDoc);
+  console.log("doc", file.doc);
 
   return (
     <>
@@ -137,7 +137,7 @@ function MyDropZone({ emailFormData, setEmailFormData, user }) {
         </div>
       )}
       <div className="my_drop_zone_upload_file_container">
-        {(file.doc || emailFormData) && !file.url && (
+        {(file.doc || currentDoc.ref) && !file.url && (
           <div>
             <span>{file.doc && file.doc.name}</span>
             <button type="button" onClick={handleDelete}>
@@ -146,8 +146,8 @@ function MyDropZone({ emailFormData, setEmailFormData, user }) {
           </div>
         )}
         {file.url !== "" &&
-          emailFormData &&
-          emailFormData.split("/").includes("images") && (
+          currentDoc.ref &&
+          currentDoc.ref.split("/").includes("images") && (
             <img
               className="my_drop_zone_upload_file"
               src={file.url}
@@ -155,8 +155,8 @@ function MyDropZone({ emailFormData, setEmailFormData, user }) {
             />
           )}
         {file.url !== "" &&
-          emailFormData &&
-          emailFormData.split("/").includes("video") && (
+          currentDoc.ref &&
+          currentDoc.ref.split("/").includes("video") && (
             <video
               className="my_drop_zone_upload_file"
               src={file.url}
@@ -168,8 +168,8 @@ function MyDropZone({ emailFormData, setEmailFormData, user }) {
             </video>
           )}
         {file.url !== "" &&
-          emailFormData &&
-          emailFormData.split("/").includes("audio") && (
+          currentDoc.ref &&
+          currentDoc.ref.split("/").includes("audio") && (
             <audio
               className="my_drop_zone_upload_file"
               src={file.url}
@@ -181,10 +181,10 @@ function MyDropZone({ emailFormData, setEmailFormData, user }) {
             </audio>
           )}
         {file.url !== "" &&
-          emailFormData &&
-          !emailFormData.split("/").includes("images") &&
-          !emailFormData.split("/").includes("video") &&
-          !emailFormData.split("/").includes("audio") && (
+          currentDoc.ref &&
+          !currentDoc.ref.split("/").includes("images") &&
+          !currentDoc.ref.split("/").includes("video") &&
+          !currentDoc.ref.split("/").includes("audio") && (
             <iframe
               title="text_media"
               className="my_drop_zone_upload_file"
@@ -222,13 +222,13 @@ function MyDropZone({ emailFormData, setEmailFormData, user }) {
   );
 }
 
-const mapStateToProps = ({ custom: { emailFormData, user } }) => ({
-  emailFormData,
+const mapStateToProps = ({ custom: { currentDoc, user } }) => ({
+  currentDoc,
   user,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setEmailFormData: setEmailFormDataAction(dispatch),
+  setCurrentDoc: setCurrentDocAction(dispatch),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MyDropZone);
+export default connect(mapStateToProps, mapDispatchToProps)(DropZone);

@@ -14,3 +14,16 @@ export const getMotivMailListListAction = (dispatch) => async () => {
     payload: data,
   });
 };
+
+export const setNewMotivationMailAction = (dispatch) => async (mailData) => {
+  if (mailData) {
+    dispatch({
+      type: "SET_NEW_MOTIVATION_MAIL",
+      payload: mailData,
+    });
+  } else {
+    dispatch({
+      type: "RESET_NEW_MOTIVATION_MAIL",
+    });
+  }
+};

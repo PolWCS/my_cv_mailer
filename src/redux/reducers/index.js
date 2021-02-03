@@ -1,9 +1,10 @@
 import { combineReducers } from "redux";
 import { bearerToken, user } from "./authReducers";
-import { cvList } from "./cvReducers";
-import { motivMailList } from "./motivMailReducers";
+import { cvList, newCv } from "./cvReducers";
+import { motivMailList, newMMail } from "./motivMailReducers";
 import { contactBookList } from "./contactBookReducers";
 import { emailFormData } from "./emailReducers";
+import { currentDoc } from "./currentDoc";
 
 export default combineReducers({
   bearerToken,
@@ -12,4 +13,7 @@ export default combineReducers({
   motivMailList,
   contactBookList,
   emailFormData,
+  newMMail,
+  newCv,
+  currentDoc,
 });
