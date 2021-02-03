@@ -1,14 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import {
-  Admin,
-  Resource,
-  ListGuesser,
-  fetchUtils,
-  ShowGuesser,
-  EditGuesser,
-} from "react-admin";
+import { Admin, Resource, fetchUtils } from "react-admin";
 import jsonServerProvider from "ra-data-json-server";
 import { createHashHistory } from "history";
 
@@ -16,6 +9,27 @@ import { createMuiTheme } from "@material-ui/core/styles";
 import { cyan, deepPurple } from "@material-ui/core/colors";
 
 import authProvider from "./login/authProvider";
+
+import UserList from "./user/UserList";
+import CvList from "./curriculumVitae/CvList";
+import MotivMailList from "./motivationMail/MotivMailList";
+import HistoryList from "./history/HistoryList";
+import ContactBookList from "./contactBook/ContactBookList";
+
+import UserShow from "./user/UserShow";
+import CvShow from "./curriculumVitae/CvShow";
+import MotivMailShow from "./motivationMail/MotivMailShow";
+import HistoryShow from "./history/HistoryShow";
+import ContactBookShow from "./contactBook/ContactBookShow";
+
+import UserEdit from "./user/UserEdit";
+import CvEdit from "./curriculumVitae/CvEdit";
+import MotivMailEdit from "./motivationMail/MotivMailEdit";
+import ContactBookEdit from "./contactBook/ContactBookEdit";
+
+import CvCreate from "./curriculumVitae/CvCreate";
+import MotivMailCreate from "./motivationMail/MotivMailCreate";
+import ContactBookCreate from "./contactBook/ContactBookCreate";
 
 // import MyLayout from "./MyLayout";
 // import superAdminRoutes from "../routes/superAdminRoutes";
@@ -59,34 +73,32 @@ const Home = () => {
       >
         <Resource
           name="users"
-          list={ListGuesser}
-          show={ShowGuesser}
-          edit={EditGuesser}
+          list={UserList}
+          show={UserShow}
+          edit={UserEdit}
         />
         <Resource
           name="curriculum_vitae"
-          list={ListGuesser}
-          show={ShowGuesser}
-          edit={EditGuesser}
+          list={CvList}
+          show={CvShow}
+          edit={CvEdit}
+          create={CvCreate}
         />
         <Resource
           name="motivation_mails"
-          list={ListGuesser}
-          show={ShowGuesser}
-          edit={EditGuesser}
+          list={MotivMailList}
+          show={MotivMailShow}
+          edit={MotivMailEdit}
+          create={MotivMailCreate}
         />
         <Resource
           name="contact_book"
-          list={ListGuesser}
-          show={ShowGuesser}
-          edit={EditGuesser}
+          list={ContactBookList}
+          show={ContactBookShow}
+          edit={ContactBookEdit}
+          create={ContactBookCreate}
         />
-        <Resource
-          name="history"
-          list={ListGuesser}
-          show={ShowGuesser}
-          edit={EditGuesser}
-        />
+        <Resource name="history" list={HistoryList} show={HistoryShow} />
       </Admin>
     </>
   );
