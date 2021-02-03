@@ -36,7 +36,7 @@ const httpClient = (url, options = {}) => {
   return fetchUtils.fetchJson(url, options);
 };
 
-const dataProvider = jsonServerProvider(process.env.REACT_APP_HOST);
+const dataProvider = jsonServerProvider(process.env.REACT_APP_HOST, httpClient);
 const history = createHashHistory();
 
 const Home = () => {
@@ -54,7 +54,7 @@ const Home = () => {
         // layout={MyLayout}
         // theme={theme}
         dataProvider={dataProvider}
-        // authProvider={authProvider}
+        authProvider={authProvider}
         history={history}
       >
         <Resource

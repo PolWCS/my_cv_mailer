@@ -3,18 +3,18 @@ import axios from "axios";
 export default {
   // called when the user attempts to log in
   login: async ({ username, password }) => {
-    // await axios
-    //   .post(`${process.env.REACT_APP_HOST}/users/signin`, {
-    //     email: username,
-    //     password,
-    //   })
-    //   .then((res) => res.data)
-    //   .then((cred) => {
-    //     sessionStorage.setItem("auth", JSON.stringify(cred));
-    //     return Promise.resolve();
-    //   })
-    //   .catch(() => Promise.reject());
-    return Promise.resolve();
+    await axios
+      .post(`${process.env.REACT_APP_HOST}/users/signin`, {
+        email: username,
+        password,
+      })
+      .then((res) => res.data)
+      .then((cred) => {
+        sessionStorage.setItem("auth", JSON.stringify(cred));
+        return Promise.resolve();
+      })
+      .catch(() => Promise.reject());
+    // return Promise.resolve();
   },
   // called when the user clicks on the logout button
   logout: () => {
@@ -42,7 +42,7 @@ export default {
       : Promise.reject();
   },
   getPermissions: () => {
-    const auth = JSON.parse(sessionStorage.getItem("auth"));
+    // const auth = JSON.parse(sessionStorage.getItem("auth"));
     return Promise.resolve();
     // return auth ? Promise.resolve(auth.role) : Promise.reject();
   },
