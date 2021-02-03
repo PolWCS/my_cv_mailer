@@ -1,11 +1,11 @@
 import React from "react";
-import { List, Datagrid, TextField, EditButton } from "react-admin";
+import { List, Datagrid, TextField, EditButton, UrlField } from "react-admin";
 
 const MotivMailList = (props) => (
   <List {...props}>
     <Datagrid rowClick="show">
       <TextField source="title" />
-      <TextField source="url" />
+      <UrlField source="url" />
       <EditButton />
     </Datagrid>
   </List>

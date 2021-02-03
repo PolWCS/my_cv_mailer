@@ -1,4 +1,14 @@
 .mailer_form {
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.mailer_form_label {
+  width: 100%;
+}
+
+.mailer_form_input {
+  width: 100%;
+  max-width: 500px;
 }

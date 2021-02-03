@@ -11,6 +11,7 @@ const MailerForm = ({
   motivMailList,
   cvList,
   user,
+  contactBookList,
 }) => {
   const [select, setSelect] = useState({
     cvUrl: null,
@@ -39,35 +40,25 @@ const MailerForm = ({
   return (
     <form className="mailer_form">
       <label htmlFor="to" className="mailer_form_label">
-        Destinataire(s):
-        <input
+        <select
           name="to"
           className="mailer_form_input"
           value={emailFormData.to}
           onChange={handleInput}
-        />
+        >
+          <option value="">--Sélectionnez un contact--</option>
+          {contactBookList.length > 0 &&
+            contactBookList.map((contact) => (
+              <option value={contact.url}>
+                {contact.firm} {contact.email} {contact.lastname}{" "}
+                {contact.firstname}{" "}
+              </option>
+            ))}
+        </select>
       </label>
-      <label htmlFor="subject" className="mailer_form_label">
-        Objet:
-        <input
-          name="subject"
-          className="mailer_form_input"
-          value={emailFormData.subject}
-          onChange={handleInput}
-        />
-      </label>
-      <label htmlFor="message" className="mailer_form_label">
-        Message:
-        <input
-          name="message"
-          className="mailer_form_input"
-          value={emailFormData.message}
-          onChange={handleInput}
-        />
-      </label>
-      <label htmlFor="type" className="mailer_form_label">
+      <label htmlFor="cvUrl" className="mailer_form_label">
         <select
-          name="type"
+          name="cvUrl"
           className="mailer_form_input"
           value={select.cvUrl}
           onChange={(event) =>
@@ -79,9 +70,9 @@ const MailerForm = ({
             cvList.map((cv) => <option value={cv.url}>{cv.title}</option>)}
         </select>
       </label>
-      <label htmlFor="type" className="mailer_form_label">
+      <label htmlFor="mmUrl" className="mailer_form_label">
         <select
-          name="type"
+          name="mmUrl"
           className="mailer_form_input"
           value={select.mmUrl}
           onChange={(event) =>
@@ -95,17 +86,36 @@ const MailerForm = ({
             ))}
         </select>
       </label>
+      <label htmlFor="subject" className="mailer_form_label">
+        <input
+          name="subject"
+          className="mailer_form_input"
+          value={emailFormData.subject}
+          placeholder="Objet"
+          onChange={handleInput}
+        />
+      </label>
+      <label htmlFor="message" className="mailer_form_label">
+        <input
+          name="message"
+          className="mailer_form_input"
+          placeholder="Message"
+          value={emailFormData.message}
+          onChange={handleInput}
+        />
+      </label>
     </form>
   );
 };
 
 const mapStateToProps = ({
-  custom: { emailFormData, motivMailList, cvList, user },
+  custom: { emailFormData, motivMailList, cvList, user, contactBookList },
 }) => ({
   emailFormData,
   motivMailList,
   cvList,
   user,
+  contactBookList,
 });
 
 const mapDispatchToProps = (dispatch) => ({
