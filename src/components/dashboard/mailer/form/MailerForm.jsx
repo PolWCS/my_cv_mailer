@@ -59,71 +59,77 @@ const MailerForm = ({
 
   return (
     <form className="mailer_form">
-      <label htmlFor="to" className="mailer_form_label">
-        <select
-          name="to"
-          className="mailer_form_input"
-          value={emailFormData.to}
-          onChange={handleInput}
-        >
-          <option value="">--Sélectionnez un contact--</option>
-          {contactBookList.length > 0 &&
-            contactBookList.map((contact) => (
-              <option value={contact.email}>
-                {contact.firm} {contact.email} {contact.lastname}{" "}
-                {contact.firstname}{" "}
-              </option>
-            ))}
-        </select>
-      </label>
-      <label htmlFor="cvUrl" className="mailer_form_label">
-        <select
-          name="cvUrl"
-          className="mailer_form_input"
-          value={select.cvUrl}
-          onChange={(event) =>
-            setSelect({ ...select, cvUrl: event.target.value })
-          }
-        >
-          <option value="">--Sélectionnez un CV--</option>
-          {cvList.length > 0 &&
-            cvList.map((cv) => <option value={cv.url}>{cv.title}</option>)}
-        </select>
-      </label>
-      <label htmlFor="mmUrl" className="mailer_form_label">
-        <select
-          name="mmUrl"
-          className="mailer_form_input"
-          value={select.mmUrl}
-          onChange={(event) =>
-            setSelect({ ...select, mmUrl: event.target.value })
-          }
-        >
-          <option value="">--Sélectionnez une lettre de motivation--</option>
-          {motivMailList.length > 0 &&
-            motivMailList.map((mail) => (
-              <option value={mail.url}>{mail.title}</option>
-            ))}
-        </select>
-      </label>
-      <label htmlFor="subject" className="mailer_form_label">
-        <input
-          name="subject"
-          className="mailer_form_input"
-          value={emailFormData.subject}
-          placeholder="Objet"
-          onChange={handleInput}
-        />
-      </label>
-      <label htmlFor="message" className="mailer_form_label">
-        <input
-          name="message"
-          className="mailer_form_input"
-          placeholder="Message"
-          value={emailFormData.message}
-          onChange={handleInput}
-        />
-      </label>
+      <div className="mailer_form_select_container">
+        <label htmlFor="to" className="mailer_form_label">
+          <select
+            name="to"
+            className="mailer_form_input"
+            value={emailFormData.to}
+            onChange={handleInput}
+          >
+            <option value="">--Sélectionnez un contact--</option>
+            {contactBookList.length > 0 &&
+              contactBookList.map((contact) => (
+                <option value={contact.email}>
+                  {contact.firm} {contact.email} {contact.lastname}{" "}
+                  {contact.firstname}{" "}
+                </option>
+              ))}
+          </select>
+        </label>
+      </div>
+      <div className="mailer_form_mail_content_container">
+        <label htmlFor="subject" className="mailer_form_label">
+          <input
+            name="subject"
+            className="mailer_form_input"
+            value={emailFormData.subject}
+            placeholder="Objet"
+            onChange={handleInput}
+          />
+        </label>
+        <label htmlFor="message" className="mailer_form_label">
+          <textarea
+            name="message"
+            className="mailer_form_textarea"
+            placeholder="Tapez votre message ici..."
+            value={emailFormData.message}
+            onChange={handleInput}
+          />
+        </label>
+      </div>
+      <div className="mailer_form_select_container">
+        <label htmlFor="cvUrl" className="mailer_form_label">
+          <select
+            name="cvUrl"
+            className="mailer_form_input"
+            value={select.cvUrl}
+            onChange={(event) =>
+              setSelect({ ...select, cvUrl: event.target.value })
+            }
+          >
+            <option value="">--Sélectionnez un CV--</option>
+            {cvList.length > 0 &&
+              cvList.map((cv) => <option value={cv.url}>{cv.title}</option>)}
+          </select>
+        </label>
+        <label htmlFor="mmUrl" className="mailer_form_label">
+          <select
+            name="mmUrl"
+            className="mailer_form_input"
+            value={select.mmUrl}
+            onChange={(event) =>
+              setSelect({ ...select, mmUrl: event.target.value })
+            }
+          >
+            <option value="">--Sélectionnez une lettre de motivation--</option>
+            {motivMailList.length > 0 &&
+              motivMailList.map((mail) => (
+                <option value={mail.url}>{mail.title}</option>
+              ))}
+          </select>
+        </label>
+      </div>
     </form>
   );
 };

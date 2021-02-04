@@ -46,14 +46,16 @@ const CvCreate = ({ newCv, setNewCv, alertGlobal, currentDoc }) => {
           />
         </label>
       )}
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={() => setToggle(!toggle)}
-      >
-        {toggle ? "Poster un fichier" : "Poster une URL"}
-      </Button>
-      <NewCvSaveBtn />
+      <div>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => setToggle(!toggle)}
+        >
+          {toggle ? "Poster un fichier" : "Poster une URL"}
+        </Button>
+        <NewCvSaveBtn />
+      </div>
       <p>{alertGlobal.message}</p>
     </form>
   );

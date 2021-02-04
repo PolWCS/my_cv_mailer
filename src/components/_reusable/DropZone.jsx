@@ -42,7 +42,8 @@ function DropZone({ currentDoc, setCurrentDoc, user }) {
   };
 
   const handleDelete = () => {
-    setFile({});
+    setFile({ isDrop: false, url: "", doc: null });
+    setCurrentDoc();
   };
 
   const handleUpload = () => {

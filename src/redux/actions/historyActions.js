@@ -1,14 +1,14 @@
 import axios from "axios";
 
-export const setLastMailSentDataAction = (dispatch) => async (mailData) => {
+export const setRecallMailToSendDataAction = (dispatch) => async (mailData) => {
   if (mailData) {
     dispatch({
-      type: "SET_LAST_MAIL_SENT_DATA",
+      type: "SET_RECALL_MAIL_TO_SEND",
       payload: mailData,
     });
   } else {
     dispatch({
-      type: "RESET_LAST_MAIL_SENT_DATA",
+      type: "RESET_RECALL_MAIL_TO_SEND",
     });
   }
 };

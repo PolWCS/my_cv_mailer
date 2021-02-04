@@ -30,8 +30,8 @@ const MotivMailCreate = ({
   return (
     <form className="app_form">
       <label htmlFor="title" className="app_label">
-        Titre:
         <input
+          placeholder="Titre"
           className="app_input"
           name="title"
           value={newMMail.title}
@@ -42,8 +42,8 @@ const MotivMailCreate = ({
         <DropZone />
       ) : (
         <label htmlFor="url" className="app_label">
-          URL:
           <input
+            placeholder="Url"
             className="app_input"
             name="url"
             value={newMMail.url}
@@ -51,14 +51,16 @@ const MotivMailCreate = ({
           />
         </label>
       )}
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={() => setToggle(!toggle)}
-      >
-        {toggle ? "Poster un fichier" : "Poster une URL"}
-      </Button>
-      <NewMMailSave />
+      <div>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => setToggle(!toggle)}
+        >
+          {toggle ? "Poster un fichier" : "Poster une URL"}
+        </Button>
+        <NewMMailSave />
+      </div>
       <p>{alertGlobal.message}</p>
     </form>
   );

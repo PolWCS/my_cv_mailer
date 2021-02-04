@@ -36,3 +36,26 @@
     transform: rotate(360deg);
   }
 }
+
+.app_input {
+  padding: 10px;
+  font-size: 16px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  background-color: #4e4a4a;
+  color: white;
+  border-top: none;
+  border-right: none;
+  border-top-right-radius: 10px;
+}
+
+.app_input::placeholder {
+  color: white;
+}
+
+.app_form {
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+}

@@ -44,7 +44,7 @@ const SendMailBtn = ({
   };
 
   return (
-    <Button variant="contained" color="primary" onClick={handleSubmit}>
+    <Button variant="contained" color="primary" style={{margin: "5px", padding: "1em"}} onClick={handleSubmit}>
       Envoyer
     </Button>
   );

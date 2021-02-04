@@ -1,14 +1,17 @@
 import React from "react";
-import axios from "axios";
 import { connect } from "react-redux";
 import MailerForm from "./form/MailerForm";
 import SendMailBtn from "./buttons/SendMailBtn";
 
+import "../../../css/dashboard/mailer/Mailer.css";
+
 const Mailer = () => {
   return (
-    <div>
-      <MailerForm />
-      <SendMailBtn />
+    <div className="mailer_container">
+      <div className="mailer_form_container">
+        <MailerForm />
+        <SendMailBtn />
+      </div>
     </div>
   );
 };

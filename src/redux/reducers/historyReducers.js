@@ -9,11 +9,11 @@ const initialState = {
   reply: 0,
 };
 
-export const lastMailSentData = (state = initialState, action) => {
+export const recallMailToSendData = (state = initialState, action) => {
   switch (action.type) {
-    case "SET_LAST_MAIL_SENT_DATA":
+    case "SET_RECALL_MAIL_TO_SEND":
       return action.payload;
-    case "RESET_LAST_MAIL_SENT_DATA":
+    case "RESET_RECALL_MAIL_TO_SEND":
       return initialState;
     case "SESSION_LOG_OUT":
       return initialState;

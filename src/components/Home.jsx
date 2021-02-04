@@ -39,8 +39,8 @@ import ContactBookCreate from "./contactBook/ContactBookCreate";
 const theme = createMuiTheme({
   palette: {
     type: "dark",
-    primary: cyan,
-    secondary: deepPurple,
+    primary: { main: "#f5deb3" },
+    secondary: { main: "#4e4a4a" },
   },
 });
 const httpClient = (url, options = {}) => {
@@ -68,7 +68,7 @@ const Home = () => {
     <>
       <Admin
         // layout={MyLayout}
-        // theme={theme}
+        theme={theme}
         dashboard={Dashboard}
         dataProvider={dataProvider}
         authProvider={authProvider}
