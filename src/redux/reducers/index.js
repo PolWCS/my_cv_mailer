@@ -6,7 +6,7 @@ import { contactBookList, currentContact } from "./contactBookReducers";
 import { emailFormData } from "./emailReducers";
 import { currentDoc } from "./currentDoc";
 import { alertMail, alertGlobal } from "./alertReducers";
-import { lastMailSentData } from "./historyReducers";
+import { lastMailSentData, recallList } from "./historyReducers";
 
 export default combineReducers({
   bearerToken,
@@ -24,4 +24,5 @@ export default combineReducers({
   alertMail,
   alertGlobal,
   lastMailSentData,
+  recallList,
 });

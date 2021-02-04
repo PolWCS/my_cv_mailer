@@ -19,6 +19,8 @@ const HistoryShow = (props) => (
         <EmailField source="firm" />
       </ReferenceField>
       <DateField source="date" />
+      <TextField source="subject" />
+      <TextField source="message" />
       <ReferenceField source="cv_id" reference="curriculum_vitae">
         <UrlField source="url" />
       </ReferenceField>

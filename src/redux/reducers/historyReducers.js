@@ -21,3 +21,16 @@ export const lastMailSentData = (state = initialState, action) => {
       return state;
   }
 };
+
+export const recallList = (state = [], action) => {
+  switch (action.type) {
+    case "SET_RECALL_LIST":
+      return action.payload;
+    case "RESET_RECALL_LIST":
+      return [];
+    case "SESSION_LOG_OUT":
+      return [];
+    default:
+      return state;
+  }
+};

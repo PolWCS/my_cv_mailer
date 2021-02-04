@@ -21,7 +21,20 @@ const SendMailBtn = ({
     await axios.post(`${process.env.REACT_APP_HOST}/history`, {
       subject: emailFormData.subject,
       message: emailFormData.message,
-      date: new Date(),
+      date: new Date()
+        .toLocaleDateString()
+        .split("/")
+        .reverse()
+        .map((e, i, w) => {
+          if (i === 0) {
+            return e;
+          } else if (i === 1) {
+            return w[2];
+          } else if (i === 2) {
+            return w[1];
+          }
+        })
+        .join("-"),
       user_id: user.id,
       contact_book_id: currentContact.id,
       cv_id: currentCv.id,
