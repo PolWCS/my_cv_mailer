@@ -27,3 +27,15 @@ export const setNewCvAction = (dispatch) => async (cvData) => {
     });
   }
 };
+
+export const getCvIdAction = (dispatch) => async (url) => {
+  const response = await axios.post(
+    `${process.env.REACT_APP_HOST}/curriculum_vitae/urlSearch`,
+    { url: url }
+  );
+  const { data } = response;
+  dispatch({
+    type: "SET_CURRENT_CV",
+    payload: data,
+  });
+};

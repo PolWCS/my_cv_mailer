@@ -14,3 +14,15 @@ export const getContactBookListAction = (dispatch) => async () => {
     payload: data,
   });
 };
+
+export const getCurrentContactIdAction = (dispatch) => async (email) => {
+  const response = await axios.post(
+    `${process.env.REACT_APP_HOST}/contact_book/emailSearch`,
+    { email: email }
+  );
+  const { data } = response;
+  dispatch({
+    type: "SET_CURRENT_CONTACT",
+    payload: data,
+  });
+};

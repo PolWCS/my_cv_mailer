@@ -27,3 +27,15 @@ export const setNewMotivationMailAction = (dispatch) => async (mailData) => {
     });
   }
 };
+
+export const getMMIdAction = (dispatch) => async (url) => {
+  const response = await axios.post(
+    `${process.env.REACT_APP_HOST}/motivation_mails/urlSearch`,
+    { url: url }
+  );
+  const { data } = response;
+  dispatch({
+    type: "SET_CURRENT_MOTIVATION_MAIL",
+    payload: data,
+  });
+};

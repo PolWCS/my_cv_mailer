@@ -25,3 +25,14 @@ export const newMMail = (state = initialState, action) => {
       return state;
   }
 };
+
+export const currentMMail = (state = initialState, action) => {
+  switch (action.type) {
+    case "SET_CURRENT_MOTIVATION_MAIL":
+      return action.payload;
+    case "RESET_CURRENT_MOTIVATION_MAIL":
+      return initialState;
+    default:
+      return state;
+  }
+};

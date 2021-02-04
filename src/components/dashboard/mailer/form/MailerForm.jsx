@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
 import { setEmailFormDataAction } from "../../../../redux/actions/emailActions";
+import { getCvIdAction } from "../../../../redux/actions/cvActions";
+import { getMMIdAction } from "../../../../redux/actions/motivMailActions";
+import { getCurrentContactIdAction } from "../../../../redux/actions/contactBookActions";
 
 import "../../../../css/dashboard/mailer/form/MailerForm.css";
 
@@ -12,29 +15,46 @@ const MailerForm = ({
   cvList,
   user,
   contactBookList,
+  getMMId,
+  getCvId,
+  getCurrentContactId,
 }) => {
   const [select, setSelect] = useState({
     cvUrl: null,
     mmUrl: null,
+    message: "",
   });
   const handleInput = (event) => {
     setEmailFormData({
       ...emailFormData,
       [event.target.name]: event.target.value,
     });
+    if (event.target.name === "message") {
+      setSelect({ ...select, message: event.target.value });
+    }
   };
+
+  useEffect(() => {
+    if (emailFormData.to) getCurrentContactId(emailFormData.to);
+  }, [emailFormData.to]);
 
   useEffect(() => {
     setEmailFormData({
       ...emailFormData,
-      html: `<p>CV ${user && user.fullName} ${select.cvUrl}</p><p>Motivation ${
-        user && user.fullName
-      } ${select.mmUrl}</p>`,
+      html: `<div><p>${select.message}</p><p>CV ${user && user.fullName} ${
+        select.cvUrl
+      }</p><p>Motivation ${user && user.fullName} ${select.mmUrl}</p></div>`,
       attachments: [
         { filename: `CV ${user && user.fullName}`, path: select.cvUrl },
         { filename: `Motivation ${user && user.fullName}`, path: select.mmUrl },
       ],
     });
+    if (select.cvUrl) {
+      getCvId(select.cvUrl);
+    }
+    if (select.mmUrl) {
+      getMMId(select.mmUrl);
+    }
   }, [select]);
 
   return (
@@ -49,7 +69,7 @@ const MailerForm = ({
           <option value="">--Sélectionnez un contact--</option>
           {contactBookList.length > 0 &&
             contactBookList.map((contact) => (
-              <option value={contact.url}>
+              <option value={contact.email}>
                 {contact.firm} {contact.email} {contact.lastname}{" "}
                 {contact.firstname}{" "}
               </option>
@@ -120,6 +140,9 @@ const mapStateToProps = ({
 
 const mapDispatchToProps = (dispatch) => ({
   setEmailFormData: setEmailFormDataAction(dispatch),
+  getMMId: getMMIdAction(dispatch),
+  getCvId: getCvIdAction(dispatch),
+  getCurrentContactId: getCurrentContactIdAction(dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MailerForm);

@@ -25,3 +25,14 @@ export const newCv = (state = initialState, action) => {
       return state;
   }
 };
+
+export const currentCv = (state = initialState, action) => {
+  switch (action.type) {
+    case "SET_CURRENT_CV":
+      return action.payload;
+    case "RESET_CURRENT_CV":
+      return initialState;
+    default:
+      return state;
+  }
+};
