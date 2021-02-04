@@ -28,6 +28,8 @@
   border-top: none;
   border-right: none;
   border-top-right-radius: 10px;
+  border-bottom: solid 1px #f5deb3;
+  border-left: solid 1px #f5deb3;
   /* min-width: 300px; */
 }
 
@@ -50,6 +52,8 @@
   border-top: none;
   border-right: none;
   border-top-right-radius: 20px;
+  border-bottom: solid 1px #f5deb3;
+  border-left: solid 1px #f5deb3;
 }
 
 .mailer_form_textarea::placeholder {

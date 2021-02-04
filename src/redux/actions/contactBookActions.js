@@ -26,3 +26,16 @@ export const getCurrentContactIdAction = (dispatch) => async (email) => {
     payload: data,
   });
 };
+
+export const setCurrentContactAction = (dispatch) => async (contact) => {
+  if (contact) {
+    dispatch({
+      type: "SET_CURRENT_CONTACT",
+      payload: contact,
+    });
+  } else {
+    dispatch({
+      type: "RESET_CURRENT_CONTACT",
+    });
+  }
+};

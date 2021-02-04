@@ -4,9 +4,17 @@ import { useGetIdentity } from "react-admin";
 import { connect } from "react-redux";
 
 import { getUserAction, setTokenAction } from "./redux/actions/index";
-import { getCvListAction } from "./redux/actions/cvActions";
-import { getMotivMailListListAction } from "./redux/actions/motivMailActions";
-import { getContactBookListAction } from "./redux/actions/contactBookActions";
+import { getCvListAction, setNewCvAction } from "./redux/actions/cvActions";
+import {
+  getMotivMailListListAction,
+  setNewMotivationMailAction,
+} from "./redux/actions/motivMailActions";
+import {
+  getContactBookListAction,
+  setCurrentContactAction,
+} from "./redux/actions/contactBookActions";
+import { setEmailFormDataAction } from "./redux/actions/emailActions";
+import { setCurrentDocAction } from "./redux/actions/docActions";
 
 import "./App.css";
 
@@ -17,15 +25,18 @@ const App = ({
   getCvList,
   getMotivMailListList,
   getContactBookList,
+  location,
+  setCurrentContact,
+  setCurrentDoc,
+  setEmailFormData,
+  setNewMotivationMail,
+  setNewCv,
 }) => {
   const { identity } = useGetIdentity();
   const auth = sessionStorage.getItem("auth");
 
   useEffect(() => {
-    if (auth)
-      (async () => {
-        await getUser();
-      })();
+    if (auth) getUser();
   }, [auth, identity]);
 
   useEffect(() => {
@@ -39,10 +50,21 @@ const App = ({
       })();
   }, [user]);
 
+  useEffect(() => {
+    setNewMotivationMail();
+    setCurrentContact();
+    setEmailFormData();
+    setCurrentDoc();
+    setNewCv();
+  }, [location]);
+
   return <Home />;
 };
 
-const mapStateToProps = ({ custom: { user } }) => ({ user });
+const mapStateToProps = ({ router: { location }, custom: { user } }) => ({
+  user,
+  location,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   getUser: getUserAction(dispatch),
@@ -50,6 +72,11 @@ const mapDispatchToProps = (dispatch) => ({
   getCvList: getCvListAction(dispatch),
   getMotivMailListList: getMotivMailListListAction(dispatch),
   getContactBookList: getContactBookListAction(dispatch),
+  setNewMotivationMail: setNewMotivationMailAction(dispatch),
+  setCurrentContact: setCurrentContactAction(dispatch),
+  setEmailFormData: setEmailFormDataAction(dispatch),
+  setCurrentDoc: setCurrentDocAction(dispatch),
+  setNewCv: setNewCvAction(dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

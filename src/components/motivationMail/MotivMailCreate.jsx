@@ -28,41 +28,45 @@ const MotivMailCreate = ({
   };
 
   return (
-    <form className="app_form">
-      <label htmlFor="title" className="app_label">
-        <input
-          placeholder="Titre"
-          className="app_input"
-          name="title"
-          value={newMMail.title}
-          onChange={handleInput}
-        />
-      </label>
-      {!toggle ? (
-        <DropZone />
-      ) : (
-        <label htmlFor="url" className="app_label">
+    <div className="flex_div_jc_center">
+      <form className="app_form">
+        <label htmlFor="title" className="app_label">
           <input
-            placeholder="Url"
+            placeholder="Titre"
             className="app_input"
-            name="url"
-            value={newMMail.url}
+            name="title"
+            value={newMMail.title}
             onChange={handleInput}
           />
         </label>
-      )}
-      <div>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => setToggle(!toggle)}
-        >
-          {toggle ? "Poster un fichier" : "Poster une URL"}
-        </Button>
-        <NewMMailSave />
-      </div>
-      <p>{alertGlobal.message}</p>
-    </form>
+        <div className="flex_div_jc_center">
+          {!toggle ? (
+            <DropZone />
+          ) : (
+            <label htmlFor="url" className="app_label">
+              <input
+                placeholder="Url"
+                className="app_input"
+                name="url"
+                value={newMMail.url}
+                onChange={handleInput}
+              />
+            </label>
+          )}
+        </div>
+        <div className="flex_div_jc_center">
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => setToggle(!toggle)}
+          >
+            {toggle ? "Poster un fichier" : "Poster une URL"}
+          </Button>
+          <NewMMailSave />
+        </div>
+        <p>{alertGlobal.message}</p>
+      </form>
+    </div>
   );
 };
 

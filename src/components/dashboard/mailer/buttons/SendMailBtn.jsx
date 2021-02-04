@@ -3,12 +3,17 @@ import axios from "axios";
 import { connect } from "react-redux";
 import Button from "@material-ui/core/Button";
 
+import { setToggleAction } from "../../../../redux/actions/toggleActions";
+import { setEmailFormDataAction } from "../../../../redux/actions/emailActions";
+
 const SendMailBtn = ({
   emailFormData,
   currentMMail,
   currentCv,
   user,
   currentContact,
+  setToggle,
+  setEmailFormData,
 }) => {
   const handleSubmit = async () => {
     await axios.post(`${process.env.REACT_APP_HOST}/email/send`, {
@@ -41,10 +46,17 @@ const SendMailBtn = ({
       mm_id: currentMMail.id,
       reply: 0,
     });
+    setToggle();
+    setEmailFormData();
   };
 
   return (
-    <Button variant="contained" color="primary" style={{margin: "5px", padding: "1em"}} onClick={handleSubmit}>
+    <Button
+      variant="contained"
+      color="primary"
+      style={{ margin: "5px", padding: "1em" }}
+      onClick={handleSubmit}
+    >
       Envoyer
     </Button>
   );
@@ -54,4 +66,9 @@ const mapStateToProps = ({
   custom: { emailFormData, currentMMail, currentCv, user, currentContact },
 }) => ({ emailFormData, currentMMail, currentCv, user, currentContact });
 
-export default connect(mapStateToProps)(SendMailBtn);
+const mapDispatchToProps = (dispatch) => ({
+  setToggle: setToggleAction(dispatch),
+  setEmailFormData: setEmailFormDataAction(dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SendMailBtn);

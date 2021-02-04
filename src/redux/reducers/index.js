@@ -7,6 +7,7 @@ import { emailFormData } from "./emailReducers";
 import { currentDoc } from "./currentDoc";
 import { alertMail, alertGlobal } from "./alertReducers";
 import { recallMailToSendData, recallList } from "./historyReducers";
+import { toggle } from "./toggleReducer";
 
 export default combineReducers({
   bearerToken,
@@ -25,4 +26,5 @@ export default combineReducers({
   alertGlobal,
   recallMailToSendData,
   recallList,
+  toggle,
 });

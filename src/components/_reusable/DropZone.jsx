@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { useDropzone } from "react-dropzone";
 import PropTypes from "prop-types";
-import axios from "axios";
 
 import { Button } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -22,15 +21,6 @@ function DropZone({ currentDoc, setCurrentDoc, user }) {
     doc: null,
     url: "",
   });
-
-  // useEffect(() => {
-  //   (async () => {
-  //     if (mediaRef !== null) {
-  //       const url = await getUrl(mediaRef);
-  //       setFile({ ...file, url });
-  //     }
-  //   })();
-  // }, [mediaRef]);
 
   const onDrop = (e) => {
     const doc = e[0];
@@ -117,7 +107,7 @@ function DropZone({ currentDoc, setCurrentDoc, user }) {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
-    <>
+    <div className="flex_div_column">
       {!file.url && (
         <div className="my_drop_zone_container" {...getRootProps()}>
           <input {...getInputProps()} />
@@ -216,7 +206,7 @@ function DropZone({ currentDoc, setCurrentDoc, user }) {
           </>
         )}
       </div>
-    </>
+    </div>
   );
 }
 

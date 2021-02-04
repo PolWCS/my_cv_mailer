@@ -5,7 +5,7 @@ const CvList = (props) => (
   <List {...props}>
     <Datagrid rowClick="show">
       <TextField source="title" />
-      <UrlField source="url" />
+      {/* <UrlField source="url" /> */}
       <EditButton />
     </Datagrid>
   </List>

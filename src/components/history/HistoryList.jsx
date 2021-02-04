@@ -11,15 +11,9 @@ const HistoryList = (props) => (
   <List {...props}>
     <Datagrid rowClick="show">
       <ReferenceField source="contact_book_id" reference="contact_book">
-        <TextField source="email" />
+        <TextField source="firm" />
       </ReferenceField>
       <DateField source="date" />
-      <ReferenceField source="cv_id" reference="curriculum_vitae">
-        <TextField source="title" />
-      </ReferenceField>
-      <ReferenceField source="mm_id" reference="motivation_mails">
-        <TextField source="title" />
-      </ReferenceField>
       <TextField source="reply" />
     </Datagrid>
   </List>

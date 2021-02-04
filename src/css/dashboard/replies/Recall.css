@@ -14,7 +14,8 @@
   border-radius: 5%;
   max-width: 500px;
   min-width: 200px;
-  background-color: #4e4a4a;
+  background-color: #f5deb3;
+  color: #4e4a4a
 }
 
 .recall_list_item_container {
@@ -47,7 +48,7 @@
 .recall_link {
   outline: none;
   text-decoration: none;
-  color: rgb(166, 212, 250)
+  color: rgb(59, 100, 134)
 }
 
 .recall_list_btn_container {

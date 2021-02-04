@@ -5,8 +5,6 @@ const ContactBookList = (props) => (
   <List {...props}>
     <Datagrid rowClick="show">
       <EmailField source="email" />
-      <TextField source="lastname" />
-      <TextField source="firstname" />
       <TextField source="firm" />
       <EditButton />
     </Datagrid>

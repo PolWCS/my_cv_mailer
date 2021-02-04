@@ -48,6 +48,8 @@
   border-top: none;
   border-right: none;
   border-top-right-radius: 10px;
+  border-bottom: solid 1px #f5deb3;
+  border-left: solid 1px #f5deb3;
 }
 
 .app_input::placeholder {
@@ -58,4 +60,22 @@
   display: flex;
   flex-direction: column;
   margin: 1em;
+}
+
+.flex_div_jc_center {
+  display: flex;
+  justify-content: center;
+}
+
+.flex_div_wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 10px;
+  margin-top: 2em;
+}
+
+.flex_div_column {
+  display: flex;
+  flex-direction: column;
 }

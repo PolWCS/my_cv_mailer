@@ -9,7 +9,6 @@ import "../../../css/dashboard/replies/Recall.css";
 
 const Recall = ({ user, getRecallList, recallList }) => {
   const [message, setMessage] = useState({ show: false, text: "" });
-  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     getRecallList();
@@ -96,7 +95,7 @@ const Recall = ({ user, getRecallList, recallList }) => {
                   <div className="recall_message_btn_container">
                     <Button
                       variant="outlined"
-                      color="primary"
+                      color="secondary"
                       onClick={() => handleMessage(e.message)}
                     >
                       Message
@@ -114,14 +113,14 @@ const Recall = ({ user, getRecallList, recallList }) => {
                 <div className="recall_list_btn_container">
                   <Button
                     variant="text"
-                    color="primary"
+                    color="secondary"
                     onClick={() => handleRecall(e.id)}
                   >
                     Renvoyer
                   </Button>
                   <Button
                     variant="text"
-                    color="primary"
+                    color="secondary"
                     onClick={() => handleCheck(e.id)}
                   >
                     Valider
