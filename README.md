@@ -6,7 +6,7 @@ Typically it's an exercise to train and experiment:
 -file upload with firebase storage,
 -crud with react-admin
 
-/!\ You need to run backend if you want app to... work actually ! (@cp4_back)
+/!\ You need to run backend if you want app to... work actually ! (https://github.com/PolWCS/cp4_back)
 
 
 # Getting Started with Create React App
