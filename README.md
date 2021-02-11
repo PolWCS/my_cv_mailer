@@ -1,3 +1,14 @@
+my_cv_mailer allows you to upload your CV and send emails with its url link and attachment. You can also keep a track of your emails, and re send the same email if you didn't have any answer.
+
+Typically it's an exercise to train and experiment: 
+-state handling with redux-thunk,
+-sending emails with nodemailer,
+-file upload with firebase storage,
+-crud with react-admin
+
+/!\ You need to run backend if you want app to... work actually !
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
